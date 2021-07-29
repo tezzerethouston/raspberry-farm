@@ -34,27 +34,35 @@ attroff(A_REVERSE);
 return; }
 
 // --- LOAD SAVE ---
-int	loadsave(int plpos[2], char *pfacing) {
+int	loadsave(int plpos[2], char *pfacing, char map[][15]) {
 
 FILE	*f;
+int	i, j;
 
 f = fopen("save", "r");
 plpos[0] = getc(f);
 plpos[1] = getc(f);
 *pfacing = getc(f);
+for (i=0; i<6; i++)
+	for (j=0; j<15; j++)
+		map[i][j] = getc(f);
 fclose(f);
 
 return 0; }
 
 // --- SAVE ---
-int	save(int plpos[2], char facing) {
+int	save(int plpos[2], char facing, char map[][15]) {
 
 FILE	*f;
+int	i, j;
 
 f = fopen("save", "w");
 putc(plpos[0], f);
 putc(plpos[1], f); 
 putc(facing, f);
+for (i=0; i<6; i++)
+	for (j=0; j<15; j++)
+		putc(map[i][j], f);
 fclose(f);
 
 return 0; }
@@ -66,8 +74,14 @@ int	i, j;
 
 erase();
 for (i=0; i<6; i++) {
-	for (j=0; j<15; j++)
-		addch(map[i][j]);
+	for (j=0; j<15; j++) {
+		if (map[i][j]=='2') {
+			attron(COLOR_PAIR(1));
+			addch(map[i][j]);
+			attroff(COLOR_PAIR(1));
+		}
+		else addch(map[i][j]);
+	}
 	addch('\n');
 }
 refresh();

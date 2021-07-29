@@ -11,6 +11,9 @@ noecho();
 //nodelay(stdscr, TRUE);	// getch doesn't wait
 curs_set(0);	// no cursor
 
+start_color();
+init_pair(1, COLOR_GREEN, COLOR_BLACK);
+
 menu:
 erase();
 printw("Hello Raspberry Farm!\n\n");
@@ -37,10 +40,11 @@ while(1) {
 		printw("Find me on GitHub @tezzerethouston.\n\n");
 		printw("    It is a simulation game, where the player takes\n");
 		printw("care of a small raspberry farm.\n\n\n");
-		printw("HOW TO USE:\n\n");
-		printw("wasd - move around\n\n");
-		printw("[shift] S - save\n\n");
-		printw("q - quit\n\n\n");
+		printw("  HOW TO USE:\n\n");
+		printw("  wasd - move around\n");
+		printw("  p - plant raspberries\n\n");
+		printw("  [shift] S - save\n");
+		printw("  q - quit\n\n\n");
 		printw("Press a key...\n");
 		getch();
 		goto menu;
