@@ -13,6 +13,7 @@ curs_set(0);	// no cursor
 
 start_color();
 init_pair(1, COLOR_GREEN, COLOR_BLACK);
+init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
 
 menu:
 erase();

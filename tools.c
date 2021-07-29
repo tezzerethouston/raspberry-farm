@@ -80,6 +80,11 @@ for (i=0; i<6; i++) {
 			addch(map[i][j]);
 			attroff(COLOR_PAIR(1));
 		}
+		else if (map[i][j]=='o') {
+			attron(COLOR_PAIR(2));
+			addch(map[i][j]);
+			attroff(COLOR_PAIR(2));
+		}
 		else addch(map[i][j]);
 	}
 	addch('\n');
