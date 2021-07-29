@@ -1,2 +1,2 @@
 all:
-	gcc main.c -l ncurses -o Raspberry-Farm
+	gcc main.c game.c tools.c -I inc -l ncurses -o Raspberry-Farm

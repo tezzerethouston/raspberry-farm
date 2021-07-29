@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include "game.h"
 
 int	main (int ac, char **av) {
 
@@ -24,9 +25,9 @@ while(1) {
 	c = getch();
 	switch (c) {
 	case 't':
-		break;
+		return game('t');
 	case 'n':
-		break;
+		return game('n');
 	case 's':
 		erase();
 		printw("Hello Raspberry Farm!\n\n");
