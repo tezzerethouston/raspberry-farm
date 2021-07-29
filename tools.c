@@ -1,5 +1,29 @@
 #include "tools.h"
 
+// --- LOAD SAVE ---
+int	loadsave(int plpos[2]) {
+
+FILE	*f;
+
+f = fopen("save", "r");
+plpos[0] = getc(f);
+plpos[1] = getc(f);
+fclose(f);
+
+return 0; }
+
+// --- SAVE ---
+int	save(int plpos[2]) {
+
+FILE	*f;
+
+f = fopen("save", "w");
+putc(plpos[0], f);
+putc(plpos[1], f);
+fclose(f);
+
+return 0; }
+
 // --- DISPLAY MAP ---
 void	displaymap(char map[][15]) {
 

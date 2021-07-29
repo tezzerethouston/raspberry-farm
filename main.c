@@ -16,7 +16,7 @@ erase();
 printw("Hello Raspberry Farm!\n\n");
 printw("t - tutorial\n");
 printw("n - new game\n");
-printw("s - saves\n");
+printw("s - load save\n");
 printw("a - about\n");
 printw("q - quit\n");
 refresh();
@@ -29,25 +29,20 @@ while(1) {
 	case 'n':
 		return game('n');
 	case 's':
-		erase();
-		printw("Hello Raspberry Farm!\n\n");
-		printw("Saves:\n\n");
-		printw("b - back\n");
-		c = getch();
-		switch(c) {
-		case 'b':
-			goto menu;
-		}
-		break;
+		return game('s');
 	case 'a':
 		erase();
 		printw("Hello Raspberry Farm!\n\n");
 		printw("    This little game was coded by Tezzeret Houston.\n");
 		printw("Find me on GitHub @tezzerethouston.\n\n");
 		printw("    It is a simulation game, where the player takes\n");
-		printw("care of a small raspberry farm.\n\n");
-		printw("b - back\n");
-		while((c = getch())!='b');
+		printw("care of a small raspberry farm.\n\n\n");
+		printw("HOW TO USE:\n\n");
+		printw("wasd - move around\n\n");
+		printw("[shift]S - save\n\n");
+		printw("q - quit\n\n\n");
+		printw("Press a key...\n");
+		getch();
 		goto menu;
 	case 'q':
 		goto exit;

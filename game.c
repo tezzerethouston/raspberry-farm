@@ -9,7 +9,8 @@ int	i, j;
 int	plpos[2];
 
 loadmap(map, collision);
-plpos[0] = 3; plpos[1] = 1;
+if (a == 's') loadsave(plpos);
+else { plpos[0] = 3; plpos[1] = 1; }
 
 while (1) {
 displaymap(map);
@@ -28,6 +29,8 @@ case 's':
 case 'd':
 	if (plpos[1]+1<15 && !collision[plpos[0]][plpos[1]+1])
 		plpos[1]++; break;
+case 'S':
+	save(plpos); break;
 case 'q':
 	endwin();
 	return 0;
