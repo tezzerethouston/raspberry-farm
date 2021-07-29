@@ -1,25 +1,60 @@
 #include "tools.h"
 
+// --- DISPLAY FACING ---
+void	displayfacing(char map[][15], int plpos[2], char facing) {
+
+attron(A_REVERSE);
+switch(facing) {
+case 'w':
+	if(plpos[0]-1<0)
+		mvaddch(plpos[0]-1, plpos[1], ' ');
+	else
+		mvaddch(plpos[0]-1, plpos[1], map[plpos[0]-1][plpos[1]]);
+	break;
+case 'a':
+	if(plpos[1]-1<0)
+		mvaddch(plpos[0], plpos[1]-1, ' ');
+	else
+		mvaddch(plpos[0], plpos[1]-1, map[plpos[0]][plpos[1]-1]);
+	break;
+case 's':
+	if(plpos[0]+1>=6)
+		mvaddch(plpos[0]+1, plpos[1], ' ');
+	else
+		mvaddch(plpos[0]+1, plpos[1], map[plpos[0]+1][plpos[1]]);
+	break;
+case 'd':
+	if(plpos[1]+1>=15)
+		mvaddch(plpos[0], plpos[1]+1, ' ');
+	else
+		mvaddch(plpos[0], plpos[1]+1, map[plpos[0]][plpos[1]+1]);
+}
+attroff(A_REVERSE);
+
+return; }
+
 // --- LOAD SAVE ---
-int	loadsave(int plpos[2]) {
+int	loadsave(int plpos[2], char *pfacing) {
 
 FILE	*f;
 
 f = fopen("save", "r");
 plpos[0] = getc(f);
 plpos[1] = getc(f);
+*pfacing = getc(f);
 fclose(f);
 
 return 0; }
 
 // --- SAVE ---
-int	save(int plpos[2]) {
+int	save(int plpos[2], char facing) {
 
 FILE	*f;
 
 f = fopen("save", "w");
 putc(plpos[0], f);
-putc(plpos[1], f);
+putc(plpos[1], f); 
+putc(facing, f);
 fclose(f);
 
 return 0; }

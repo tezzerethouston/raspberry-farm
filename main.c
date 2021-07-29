@@ -39,7 +39,7 @@ while(1) {
 		printw("care of a small raspberry farm.\n\n\n");
 		printw("HOW TO USE:\n\n");
 		printw("wasd - move around\n\n");
-		printw("[shift]S - save\n\n");
+		printw("[shift] S - save\n\n");
 		printw("q - quit\n\n\n");
 		printw("Press a key...\n");
 		getch();
